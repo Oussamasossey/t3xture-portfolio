@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import {
+  CarFront,
   Check,
   ChevronDown,
   ExternalLink,
+  HeartPulse,
   Languages,
   Plane,
   Smartphone,
@@ -24,6 +27,8 @@ const ICONS: Record<ProjectIcon, LucideIcon> = {
   utensils: Utensils,
   languages: Languages,
   smartphone: Smartphone,
+  heartPulse: HeartPulse,
+  car: CarFront,
 };
 
 type ProjectsDict = Dictionary["projects"];
@@ -41,6 +46,7 @@ export function ProjectCard({
 }) {
   const reduceMotion = useReducedMotion();
   const [expanded, setExpanded] = useState(false);
+  const [imageFailed, setImageFailed] = useState(false);
   const detailsId = `project-details-${project.id}`;
   const Icon = ICONS[project.icon];
 
@@ -64,6 +70,22 @@ export function ProjectCard({
           aria-hidden="true"
           className="absolute left-1/2 top-1/2 size-20 -translate-x-1/2 -translate-y-1/2 text-white/90 drop-shadow-2xl transition-transform duration-500 ease-out group-hover:scale-110"
         />
+        {!imageFailed && (
+          <>
+            <Image
+              src={`/projects/${project.id}.png`}
+              alt={`${copy.title} — ${copy.client}`}
+              fill
+              sizes="(min-width: 768px) 560px, 100vw"
+              className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+              onError={() => setImageFailed(true)}
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/40 to-transparent"
+            />
+          </>
+        )}
         <span className="absolute start-4 top-4 rounded-full bg-black/25 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
           {copy.category}
         </span>

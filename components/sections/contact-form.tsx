@@ -14,7 +14,7 @@ type FormValues = {
   message: string;
 };
 
-type Status = "idle" | "sending" | "sent";
+type Status = "idle" | "sending" | "sent" | "error";
 
 type FormDict = Dictionary["contact"]["form"];
 
@@ -59,8 +59,9 @@ export function ContactForm({ dict }: { dict: FormDict }) {
     }
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (status === "sending") return;
 
     const nextErrors = validate(values, dict.errors);
     if (Object.keys(nextErrors).length > 0) {
@@ -70,9 +71,20 @@ export function ContactForm({ dict }: { dict: FormDict }) {
       return;
     }
 
-    // No backend yet — simulate a successful round trip.
     setStatus("sending");
-    window.setTimeout(() => setStatus("sent"), 900);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...values,
+          company: new FormData(event.currentTarget).get("company") ?? "",
+        }),
+      });
+      setStatus(response.ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
   };
 
   if (status === "sent") {
@@ -107,7 +119,7 @@ export function ContactForm({ dict }: { dict: FormDict }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="glass rounded-3xl p-6 sm:p-8">
+    <form onSubmit={handleSubmit} noValidate className="glass relative rounded-3xl p-6 sm:p-8">
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="name">{dict.name}</Label>
@@ -170,6 +182,17 @@ export function ContactForm({ dict }: { dict: FormDict }) {
           </p>
         )}
       </div>
+
+      <div aria-hidden="true" className="absolute -start-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="company">Company</label>
+        <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
+      {status === "error" && (
+        <p role="alert" className="mt-5 text-sm font-medium text-destructive">
+          {dict.sendError}
+        </p>
+      )}
 
       <div className="mt-6 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-end">
         <Button

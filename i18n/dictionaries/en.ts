@@ -105,7 +105,7 @@ export const en = {
     label: "Projects",
     title: { before: "Selected ", highlight: "work", after: "" } satisfies RichText,
     description:
-      "Four recent builds, each one designed, developed and shipped end to end.",
+      "Six recent builds, each one designed, developed and shipped end to end.",
     counter: "case studies",
     viewDemo: "View Project",
     details: "Details",
@@ -174,6 +174,38 @@ export const en = {
           "Checkout-ready cart structure",
         ],
         tags: ["Next.js", "E-commerce", "Tailwind CSS", "Performance"],
+      },
+      kine: {
+        title: "Physiotherapy Clinic",
+        client: "Cabinet Équilibre",
+        category: "Healthcare website",
+        description:
+          "A calm, reassuring clinic website with treatment pages, a team section and an easy appointment request.",
+        details:
+          "Cabinet Équilibre wanted patients to understand their care before they ever call. I built a clean, mobile-first site that explains each treatment in plain language, introduces the therapists and turns visits into appointment requests with a short, guided form.",
+        features: [
+          "Treatment pages explained in plain language",
+          "Appointment request form with validation",
+          "Team, opening hours and map section",
+          "Local business schema for search results",
+        ],
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "SEO"],
+      },
+      "car-rental": {
+        title: "Car Rental",
+        client: "Safar Cars",
+        category: "Booking website",
+        description:
+          "A fast car-rental site with a clear fleet catalogue, date-based search and a quick reservation request.",
+        details:
+          "Safar Cars needed customers to find the right car in seconds. The site lists the fleet with clear specs and daily rates, filters by category and dates, and sends a reservation request straight to the agency, with WhatsApp contact one tap away on mobile.",
+        features: [
+          "Fleet catalogue with category and price filters",
+          "Pick-up and return date search",
+          "Reservation request with instant WhatsApp contact",
+          "Fast, mobile-first pages for customers on the move",
+        ],
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "Forms"],
       },
     },
   },
@@ -256,6 +288,7 @@ export const en = {
       successTitle: "Message sent",
       successText: "Thanks for reaching out. I'll get back to you within 24 hours.",
       sendAnother: "Send another message",
+      sendError: "Something went wrong. Please try again or email hello@t3xture.dev.",
     },
   },
 

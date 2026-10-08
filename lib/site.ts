@@ -21,7 +21,7 @@ export type NavItem = {
 export const siteConfig = {
   name: "T3xture",
   realName: "Oussama",
-  url: "https://t3xture-portfolio.example.com",
+  url: "https://t3xture.dev",
   email: "hello@t3xture.dev",
   author: "T3xture",
   nav: [
@@ -35,6 +35,6 @@ export const siteConfig = {
     { label: "LinkedIn", href: "https://www.linkedin.com/in/oussamasossey/", icon: FaLinkedinIn },
     { label: "Instagram", href: "https://www.instagram.com/oussama.sossey/", icon: FaInstagram },
     // Replace YOUR_PHONE_NUMBER: digits only, with country code (e.g. 212612345678)
-    { label: "WhatsApp", href: "https://wa.me/+212676738411", icon: FaWhatsapp },
+    { label: "WhatsApp", href: "https://wa.me/+212628226293", icon: FaWhatsapp },
   ] satisfies Social[],
 };

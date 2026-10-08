@@ -102,7 +102,7 @@ export const fr: Dictionary = {
     label: "Projets",
     title: { before: "Réalisations ", highlight: "sélectionnées", after: "" },
     description:
-      "Quatre réalisations récentes, chacune conçue, développée et livrée de A à Z.",
+      "Six réalisations récentes, chacune conçue, développée et livrée de A à Z.",
     counter: "études de cas",
     viewDemo: "Voir le projet",
     details: "Détails",
@@ -171,6 +171,38 @@ export const fr: Dictionary = {
           "Panier prêt pour le paiement",
         ],
         tags: ["Next.js", "E-commerce", "Tailwind CSS", "Performance"],
+      },
+      kine: {
+        title: "Cabinet de kinésithérapie",
+        client: "Cabinet Équilibre",
+        category: "Site de santé",
+        description:
+          "Un site de cabinet apaisant et rassurant, avec des pages de soins, une présentation de l'équipe et une prise de rendez-vous simple.",
+        details:
+          "Cabinet Équilibre voulait que les patients comprennent leurs soins avant même d'appeler. J'ai conçu un site épuré, pensé mobile d'abord, qui explique chaque soin avec des mots simples, présente les thérapeutes et transforme les visites en demandes de rendez-vous grâce à un court formulaire guidé.",
+        features: [
+          "Pages de soins expliquées simplement",
+          "Formulaire de demande de rendez-vous avec validation",
+          "Équipe, horaires d'ouverture et carte",
+          "Données structurées d'entreprise locale pour la recherche",
+        ],
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "SEO"],
+      },
+      "car-rental": {
+        title: "Location de voitures",
+        client: "Safar Cars",
+        category: "Site de réservation",
+        description:
+          "Un site de location rapide, avec un catalogue de véhicules clair, une recherche par dates et une demande de réservation express.",
+        details:
+          "Safar Cars voulait que les clients trouvent la bonne voiture en quelques secondes. Le site présente la flotte avec des caractéristiques claires et les tarifs journaliers, filtre par catégorie et par dates, et envoie la demande de réservation directement à l'agence, avec un contact WhatsApp à portée de pouce sur mobile.",
+        features: [
+          "Catalogue de véhicules avec filtres de catégorie et de prix",
+          "Recherche par dates de prise en charge et de retour",
+          "Demande de réservation avec contact WhatsApp immédiat",
+          "Pages rapides, pensées mobile d'abord",
+        ],
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "Formulaires"],
       },
     },
   },
@@ -269,6 +301,7 @@ export const fr: Dictionary = {
       successTitle: "Message envoyé",
       successText: "Merci de m'avoir contacté. Je reviens vers vous sous 24 heures.",
       sendAnother: "Envoyer un autre message",
+      sendError: "Une erreur est survenue. Réessayez ou écrivez à hello@t3xture.dev.",
     },
   },
 
