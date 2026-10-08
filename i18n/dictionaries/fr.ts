@@ -108,6 +108,7 @@ export const fr: Dictionary = {
     details: "Détails",
     builtWith: "réalisé avec",
     demoBadge: "Démo",
+    liveBadge: "En ligne",
     items: {
       "travel-agency": {
         title: "Excursions dans le désert marocain",

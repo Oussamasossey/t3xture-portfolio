@@ -41,7 +41,7 @@ export function ProjectCard({
 }: {
   project: Project;
   copy: ProjectsDict["items"][Project["id"]];
-  labels: Pick<ProjectsDict, "viewDemo" | "details" | "builtWith" | "demoBadge">;
+  labels: Pick<ProjectsDict, "viewDemo" | "details" | "builtWith" | "demoBadge" | "liveBadge">;
   index: number;
 }) {
   const reduceMotion = useReducedMotion();
@@ -90,7 +90,7 @@ export function ProjectCard({
           {copy.category}
         </span>
         <span className="absolute end-4 top-4 rounded-full bg-black/25 px-3 py-1 font-mono text-xs text-white backdrop-blur-sm">
-          {labels.demoBadge}
+          {project.demo ? labels.demoBadge : labels.liveBadge}
         </span>
       </div>
 

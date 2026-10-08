@@ -12,6 +12,8 @@ export type Project = {
   year: string;
   /** Placeholder link — swap for the real deployment URL. */
   demoUrl: string;
+  /** false = real production project (shows "Live" instead of "Demo"). */
+  demo: boolean;
   icon: ProjectIcon;
   /** Tailwind gradient utility classes (static strings so they are always generated). */
   gradient: string;
@@ -22,6 +24,7 @@ export const projects: Project[] = [
     id: "travel-agency",
     year: "2025",
     demoUrl: "https://noursands.com",
+    demo: false,
     icon: "plane",
     gradient: "from-sky-500 via-cyan-400 to-teal-400",
   },
@@ -29,6 +32,7 @@ export const projects: Project[] = [
     id: "restaurant",
     year: "2025",
     demoUrl: "https://restaurant.t3xture.dev",
+    demo: true,
     icon: "utensils",
     gradient: "from-amber-500 via-orange-500 to-rose-500",
   },
@@ -36,6 +40,7 @@ export const projects: Project[] = [
     id: "language-school",
     year: "2024",
     demoUrl: "https://ecole.t3xture.dev",
+    demo: true,
     icon: "languages",
     gradient: "from-violet-500 via-indigo-500 to-blue-500",
   },
@@ -43,6 +48,7 @@ export const projects: Project[] = [
     id: "phone-store",
     year: "2024",
     demoUrl: "https://phoneseller.t3xture.dev",
+    demo: true,
     icon: "smartphone",
     gradient: "from-fuchsia-500 via-pink-500 to-purple-500",
   },
@@ -50,6 +56,7 @@ export const projects: Project[] = [
     id: "kine",
     year: "2026",
     demoUrl: "https://kine.t3xture.dev",
+    demo: true,
     icon: "heartPulse",
     gradient: "from-emerald-500 via-green-400 to-lime-400",
   },
@@ -57,6 +64,7 @@ export const projects: Project[] = [
     id: "car-rental",
     year: "2026",
     demoUrl: "https://location.t3xture.dev",
+    demo: true,
     icon: "car",
     gradient: "from-slate-700 via-slate-500 to-sky-500",
   },

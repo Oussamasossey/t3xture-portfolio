@@ -105,6 +105,7 @@ export const ary: Dictionary = {
     details: "التفاصيل",
     builtWith: "مبني بـ",
     demoBadge: "ديمو",
+    liveBadge: "مشروع حقيقي",
     items: {
       "travel-agency": {
         title: "رحلات الصحرا فالمغرب",

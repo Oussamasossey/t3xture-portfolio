@@ -111,6 +111,7 @@ export const en = {
     details: "Details",
     builtWith: "built with",
     demoBadge: "Demo",
+    liveBadge: "Live",
     items: {
       "travel-agency": {
         title: "Morocco Desert Tours",
