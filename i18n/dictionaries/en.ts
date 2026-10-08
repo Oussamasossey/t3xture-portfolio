@@ -113,20 +113,20 @@ export const en = {
     demoBadge: "Demo",
     items: {
       "travel-agency": {
-        title: "Travel Agency",
-        client: "Atlas Voyages",
-        category: "Booking platform",
+        title: "Morocco Desert Tours",
+        client: "NourSands",
+        category: "Tourism booking platform",
         description:
-          "A destination-first booking experience with rich imagery, smart filters and a frictionless enquiry flow.",
+          "A premium tours website for Sahara desert trips and private journeys from Marrakech, with tours, activities, hotels and online booking.",
         details:
-          "Atlas Voyages needed a site that sells the feeling of travel before it sells the trip. I built a fast, image-led marketing site with a searchable destination catalogue, an itinerary builder and a multi-step enquiry form that qualifies leads before they reach the sales team.",
+          "NourSands sells private Morocco journeys, from Marrakech to Merzouga, the Sahara, the Atlas Mountains and Aït Ben Haddou. The site puts the experience first with a full-screen hero, then guides visitors through tours, activities and hotels to a booking they can complete online, in several languages.",
         features: [
-          "Searchable destination catalogue with filters",
-          "Multi-step enquiry and quote request flow",
-          "SEO-optimised landing pages per destination",
-          "Localised content ready for new markets",
+          "Tours, activities and hotels catalogue",
+          "Online booking with PayPal checkout",
+          "Multilingual site with language switcher",
+          "Blog and customer account area",
         ],
-        tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+        tags: ["Next.js", "TypeScript", "Multilingual", "PayPal"],
       },
       restaurant: {
         title: "Restaurant",

@@ -110,20 +110,20 @@ export const fr: Dictionary = {
     demoBadge: "Démo",
     items: {
       "travel-agency": {
-        title: "Agence de voyages",
-        client: "Atlas Voyages",
-        category: "Plateforme de réservation",
+        title: "Excursions dans le désert marocain",
+        client: "NourSands",
+        category: "Plateforme de réservation touristique",
         description:
-          "Une expérience de réservation centrée sur la destination, avec de belles images, des filtres intelligents et un parcours de demande fluide.",
+          "Un site premium pour des excursions dans le désert du Sahara et des voyages privés au départ de Marrakech, avec circuits, activités, hôtels et réservation en ligne.",
         details:
-          "Atlas Voyages voulait un site qui vend l'envie de voyager avant de vendre le voyage. J'ai conçu un site vitrine rapide, porté par l'image, avec un catalogue de destinations consultable, un créateur d'itinéraires et un formulaire de demande en plusieurs étapes qui qualifie les prospects avant qu'ils n'arrivent à l'équipe commerciale.",
+          "NourSands propose des voyages privés au Maroc, de Marrakech à Merzouga, au Sahara, dans l'Atlas et à Aït Ben Haddou. Le site met l'expérience en avant avec un grand visuel plein écran, puis guide les visiteurs entre circuits, activités et hôtels jusqu'à une réservation en ligne, en plusieurs langues.",
         features: [
-          "Catalogue de destinations avec recherche et filtres",
-          "Demande de devis en plusieurs étapes",
-          "Pages d'atterrissage optimisées SEO par destination",
-          "Contenu localisé, prêt pour de nouveaux marchés",
+          "Catalogue de circuits, d'activités et d'hôtels",
+          "Réservation en ligne avec paiement PayPal",
+          "Site multilingue avec sélecteur de langue",
+          "Blog et espace client",
         ],
-        tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+        tags: ["Next.js", "TypeScript", "Multilingue", "PayPal"],
       },
       restaurant: {
         title: "Restaurant",
