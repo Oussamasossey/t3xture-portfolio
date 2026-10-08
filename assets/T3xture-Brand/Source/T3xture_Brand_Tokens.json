@@ -1,0 +1,47 @@
+{
+  "brand": "T3xture",
+  "symbol": {
+    "name": "The Tile",
+    "description": "A square with two opposite quarter-circles (radius = half the side) removed. A Truchet tile: alone it is the mark; repeated at random 0°/90° rotations it becomes the brand pattern.",
+    "path": "M50 0H100V50C72.386 50 50 72.386 50 100H0V50C27.614 50 50 27.614 50 0Z",
+    "grid": "100 x 100 units",
+    "orientation": "Cut corners top-left and bottom-right. Do not rotate the standalone symbol.",
+    "clearSpace": "25 units (1/4 of the symbol) on every side",
+    "minimumSize": {
+      "symbol": "12 px",
+      "horizontalLogo": "96 px wide",
+      "wordmark": "64 px wide"
+    }
+  },
+  "colors": {
+    "ink": {
+      "hex": "#0E0E0E",
+      "role": "Primary"
+    },
+    "paper": {
+      "hex": "#F2F0EB",
+      "role": "Primary"
+    },
+    "signal": {
+      "hex": "#FF4F1F",
+      "role": "Optional accent: pattern backgrounds, highlights, links. Never inside the symbol."
+    },
+    "graphite": {
+      "hex": "#2A2927",
+      "role": "Secondary dark surface"
+    },
+    "stone": {
+      "hex": "#8A867E",
+      "role": "Secondary text"
+    }
+  },
+  "typography": {
+    "wordmark": "Geist Medium, tracking -1.5%, outlined to vector paths. Never retype.",
+    "headings_ui": "Geist 500-600",
+    "labels_meta": "Geist Mono 400-500"
+  },
+  "lockups": {
+    "horizontal": "wordmark cap height = 0.44 × symbol height; gap 30 units; caps centered on symbol",
+    "stacked": "wordmark cap height 34; gap 32"
+  }
+}

@@ -1,26 +1,240 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-display);
+  --font-signature: var(--font-handwriting);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ---------------------------------------------------------------------------
+   Theme tokens — the portfolio is dark-only, so there is a single token set.
+   The `dark` class on <html> (set in the root layout) is kept only so the
+   shadcn `dark:` variants in components/ui keep resolving.
+--------------------------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+  --radius: 0.9rem;
+  --background: oklch(0.13 0.015 280);
+  --foreground: oklch(0.96 0.005 285);
+  --card: oklch(0.17 0.018 280);
+  --card-foreground: oklch(0.96 0.005 285);
+  --popover: oklch(0.17 0.018 280);
+  --popover-foreground: oklch(0.96 0.005 285);
+  --primary: oklch(0.72 0.16 277);
+  --primary-foreground: oklch(0.16 0.03 277);
+  --secondary: oklch(0.24 0.02 280);
+  --secondary-foreground: oklch(0.96 0.005 285);
+  --muted: oklch(0.23 0.018 280);
+  --muted-foreground: oklch(0.7 0.02 285);
+  --accent: oklch(0.26 0.025 280);
+  --accent-foreground: oklch(0.96 0.005 285);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.72 0.16 277);
+  --chart-1: oklch(0.72 0.16 277);
+  --chart-2: oklch(0.75 0.13 200);
+  --chart-3: oklch(0.68 0.16 320);
+  --chart-4: oklch(0.8 0.14 80);
+  --chart-5: oklch(0.68 0.14 150);
+  --sidebar: oklch(0.17 0.018 280);
+  --sidebar-foreground: oklch(0.96 0.005 285);
+  --sidebar-primary: oklch(0.72 0.16 277);
+  --sidebar-primary-foreground: oklch(0.16 0.03 277);
+  --sidebar-accent: oklch(0.26 0.025 280);
+  --sidebar-accent-foreground: oklch(0.96 0.005 285);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.72 0.16 277);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Anchored sections clear the fixed header. */
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklch, var(--primary) 35%, transparent);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------------------------------------------------------------------------
+   Custom utilities
+--------------------------------------------------------------------------- */
+
+.glass {
+  background-color: color-mix(in oklch, var(--background) 70%, transparent);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid color-mix(in oklch, var(--foreground) 10%, transparent);
+}
+
+.glass-strong {
+  background-color: color-mix(in oklch, var(--background) 85%, transparent);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid color-mix(in oklch, var(--foreground) 12%, transparent);
+}
+
+.text-gradient {
+  background-image: linear-gradient(115deg, #a78bfa 0%, #818cf8 42%, #22d3ee 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Bottom-edge dissolve for the hero portrait and its brand layers: the
+   cut-out melts into the background instead of ending on a hard edge, so
+   the subject reads as part of the composition rather than a sticker. */
+.hero-dissolve {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 88%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 88%);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--foreground) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 7%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 35%, #000 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 35%, #000 25%, transparent 78%);
+}
+
+.noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -30px, 0) scale(1.05);
+  }
+}
+
+.animate-float {
+  animation: float 10s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 15s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Darija (Arabic script, right-to-left)
+   - swap in an Arabic-capable typeface (Latin glyphs included)
+   - drop letter-spacing: tracking breaks Arabic letter joins
+   - give Arabic more line height so marks above/below the line are not clipped
+--------------------------------------------------------------------------- */
+html[dir="rtl"] {
+  --font-geist-sans: var(--font-arabic), system-ui, sans-serif;
+  --font-display: var(--font-arabic), system-ui, sans-serif;
+}
+
+html[dir="rtl"] *,
+html[dir="rtl"] *::before,
+html[dir="rtl"] *::after {
+  letter-spacing: 0 !important;
+}
+
+html[dir="rtl"] body {
+  line-height: 1.75;
+}
+
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3 {
+  line-height: 1.35 !important;
+}
+
+/* Brand names, emails and code stay left-to-right inside Arabic text. */
+.ltr-isolate {
+  unicode-bidi: isolate;
+  direction: ltr;
+}
+
+/* Hero headline scale per language: French phrases are longer than English, so the
+   rotating phrase ("des boutiques en ligne") is sized to stay on one line. */
+html[lang="fr"] {
+  --hero-scale: 0.82;
+}
+
+@media (min-width: 768px) {
+  html[lang="fr"] {
+    --hero-scale: 0.74;
+  }
 }
