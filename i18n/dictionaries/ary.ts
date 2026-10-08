@@ -104,6 +104,7 @@ export const ary: Dictionary = {
     viewDemo: "شوف المشروع",
     details: "التفاصيل",
     builtWith: "مبني بـ",
+    demoBadge: "ديمو",
     items: {
       "travel-agency": {
         title: "وكالة أسفار",

@@ -110,6 +110,7 @@ export const en = {
     viewDemo: "View Project",
     details: "Details",
     builtWith: "built with",
+    demoBadge: "Demo",
     items: {
       "travel-agency": {
         title: "Travel Agency",

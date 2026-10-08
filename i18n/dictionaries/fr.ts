@@ -107,6 +107,7 @@ export const fr: Dictionary = {
     viewDemo: "Voir le projet",
     details: "Détails",
     builtWith: "réalisé avec",
+    demoBadge: "Démo",
     items: {
       "travel-agency": {
         title: "Agence de voyages",
