@@ -11,6 +11,7 @@ import type { Dictionary } from "@/i18n/dictionaries/en";
 type FormValues = {
   name: string;
   email: string;
+  phone: string;
   message: string;
 };
 
@@ -18,7 +19,7 @@ type Status = "idle" | "sending" | "sent" | "error";
 
 type FormDict = Dictionary["contact"]["form"];
 
-const EMPTY: FormValues = { name: "", email: "", message: "" };
+const EMPTY: FormValues = { name: "", email: "", phone: "", message: "" };
 
 function validate(
   values: FormValues,
@@ -34,6 +35,14 @@ function validate(
     errors.email = errorsCopy.emailRequired;
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email.trim())) {
     errors.email = errorsCopy.emailInvalid;
+  }
+
+  const phone = values.phone.trim();
+  if (phone) {
+    const digits = phone.replace(/\D/g, "");
+    if (!/^[+\d\s().-]+$/.test(phone) || digits.length < 7 || digits.length > 15) {
+      errors.phone = errorsCopy.phoneInvalid;
+    }
   }
 
   if (!values.message.trim()) {
@@ -162,6 +171,36 @@ export function ContactForm({ dict }: { dict: FormDict }) {
             </p>
           )}
         </div>
+      </div>
+
+      <div className="mt-5 space-y-2">
+        <Label htmlFor="phone">
+          {dict.phone}{" "}
+          <span className="font-normal text-muted-foreground">({dict.phoneOptional})</span>
+        </Label>
+        <Input
+          id="phone"
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          inputMode="tel"
+          placeholder={dict.phonePlaceholder}
+          dir="ltr"
+          className="rtl:text-end"
+          value={values.phone}
+          onChange={update("phone")}
+          aria-invalid={errors.phone ? true : undefined}
+          aria-describedby={errors.phone ? "phone-error" : "phone-hint"}
+        />
+        {errors.phone ? (
+          <p id="phone-error" className="text-xs font-medium text-destructive">
+            {errors.phone}
+          </p>
+        ) : (
+          <p id="phone-hint" className="text-xs text-muted-foreground">
+            {dict.phoneHint}
+          </p>
+        )}
       </div>
 
       <div className="mt-5 space-y-2">

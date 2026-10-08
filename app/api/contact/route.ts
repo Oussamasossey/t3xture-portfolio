@@ -68,8 +68,17 @@ export async function POST(request: Request) {
   const name = clean(body.name, 100);
   const email = clean(body.email, 200);
   const message = clean(body.message, 5000);
+  const phone = clean(body.phone, 30);
+  const phoneDigits = phone.replace(/\D/g, "");
+  const phoneValid =
+    !phone || (/^[+\d\s().-]+$/.test(phone) && phoneDigits.length >= 7 && phoneDigits.length <= 15);
+  // A wa.me link only works with an international number (+… or 00…).
+  const whatsappUrl =
+    phone && (phone.startsWith("+") || phone.startsWith("00"))
+      ? `https://wa.me/${phone.startsWith("00") ? phoneDigits.slice(2) : phoneDigits}`
+      : "";
 
-  if (!name || !EMAIL_RE.test(email) || message.length < 10) {
+  if (!name || !EMAIL_RE.test(email) || !phoneValid || message.length < 10) {
     return NextResponse.json({ ok: false }, { status: 400 });
   }
 
@@ -84,9 +93,18 @@ export async function POST(request: Request) {
       to: [TO],
       reply_to: email,
       subject: `New portfolio message from ${name.replace(/[\r\n]+/g, " ")}`,
-      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+      text: `Name: ${name}\nEmail: ${email}\n${phone ? `WhatsApp/Phone: ${phone}\n${whatsappUrl ? `Chat: ${whatsappUrl}\n` : "(no country code)\n"}` : ""}\n${message}`,
       html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p>
 <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+${
+  phone
+    ? `<p><strong>WhatsApp / Phone:</strong> ${escapeHtml(phone)}${
+        whatsappUrl
+          ? ` (<a href="${whatsappUrl}">Open in WhatsApp</a>)`
+          : " (no country code)"
+      }</p>`
+    : ""
+}
 <p style="white-space:pre-wrap">${escapeHtml(message)}</p>`,
     }),
   });
